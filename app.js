@@ -30,4 +30,13 @@ dans le tableau todolist si newtodo n'est pas vide*/
         res.redirect('/todo');
     }
 })
+
+/*Route pour la suppression d'une ligne de la todolist : /todo/suppression/:id
+selon l'index reçu dans l'adresse, on splice la ligne de la todolist[] correspondante*/
+.get('/todo/supprimer/:id', function(req, res){
+    if (req.params.id != ''){
+        req.session.todolist.splice(req.params.id, 1);
+    }
+    res.redirect('/todo');
+})
 ;
