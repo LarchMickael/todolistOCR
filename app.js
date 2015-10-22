@@ -16,3 +16,9 @@ app.use(session({secret: 'todolistsecured'}))
     }
     next();
 })
+
+//Route principale /todo
+.get('/todo', function(req, res){
+    res.render('public/views/todo.ejs', {todolist: req.session.todolist});
+})
+;
