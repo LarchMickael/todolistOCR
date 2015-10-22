@@ -1,0 +1,10 @@
+{
+  "name": "tuto2",
+  "version": "0.1.0",
+  "dependencies": {
+    "express": "~4.0.0",
+    "ejs": "~2.0.0",
+    "cookie-session": "~2.0.0",
+    "body-parser": "~1.0.0"
+  }
+}
