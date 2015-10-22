@@ -22,7 +22,7 @@ app.use(session({secret: 'todolistsecured'}))
     res.render('public/views/todo.ejs', {todolist: req.session.todolist});
 })
 
-/*Route pour l'ajout /todo/add: on ajoute le contenu de newtodo (cf todo.ejs)
+/*Route pour l'ajout /todo/ajouter: on ajoute le contenu de newtodo (cf todo.ejs)
 dans le tableau todolist si newtodo n'est pas vide*/
 .post('/todo/ajouter', urlencodedparser, function(req, res) {
     if (req.body.newtodo != ''){
@@ -31,7 +31,7 @@ dans le tableau todolist si newtodo n'est pas vide*/
     }
 })
 
-/*Route pour la suppression d'une ligne de la todolist : /todo/suppression/:id
+/*Route pour la suppression d'une ligne de la todolist : /todo/supprimer/:id
 selon l'index reçu dans l'adresse, on splice la ligne de la todolist[] correspondante*/
 .get('/todo/supprimer/:id', function(req, res){
     if (req.params.id != ''){
