@@ -11,7 +11,7 @@ app.use(session({secret: 'todolistsecured'}))
 
 //Initialisation de la session si nécessaire
 .use(function(req, res, next) {
-    if (typeof(req.session.todolist) == undefined){
+    if (typeof(req.session.todolist) == 'undefined'){
         req.session.todolist = [];
     }
     next();
