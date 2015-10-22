@@ -5,8 +5,13 @@ var urlencodedparser = bodyparser.urlencoded({extended: false});
 
 var app = express();
 
+app.use(express.static(__dirname + '/public'))
+
+.use('/static', express.static(__dirname + '/public'))
+
+
 //Création d'une session
-app.use(session({secret: 'todolistsecured'}))
+.use(session({secret: 'todolistsecured'}))
 
 //Initialisation de la session si nécessaire
 .use(function(req, res, next) {
@@ -17,7 +22,7 @@ app.use(session({secret: 'todolistsecured'}))
 })
 
 //Route principale /todo
-.get('/todo', function(req, res){
+.get('/todo', express.static(__dirname + '/public'), function(req, res){
     res.render('todo.ejs', {todolist: req.session.todolist});
 })
 
