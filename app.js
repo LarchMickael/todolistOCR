@@ -21,4 +21,13 @@ app.use(session({secret: 'todolistsecured'}))
 .get('/todo', function(req, res){
     res.render('public/views/todo.ejs', {todolist: req.session.todolist});
 })
+
+/*Route pour l'ajout /todo/add: on ajoute le contenu de newtodo (cf todo.ejs)
+dans le tableau todolist si newtodo n'est pas vide*/
+.post('/todo/ajouter', urlencodedparser, function(req, res) {
+    if (req.body.newtodo != ''){
+        req.session.todolist.push(req.body.newtodo);
+        res.redirect('/todo');
+    }
+})
 ;
