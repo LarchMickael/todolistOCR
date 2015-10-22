@@ -19,7 +19,7 @@ app.use(session({secret: 'todolistsecured'}))
 
 //Route principale /todo
 .get('/todo', function(req, res){
-    res.render('public/views/todo.ejs', {todolist: req.session.todolist});
+    res.render('todo.ejs', {todolist: req.session.todolist});
 })
 
 /*Route pour l'ajout /todo/ajouter: on ajoute le contenu de newtodo (cf todo.ejs)
@@ -40,6 +40,6 @@ selon l'index reçu dans l'adresse, on splice la ligne de la todolist[] correspo
     res.redirect('/todo');
 })
 .use(function(req, res, next){
-    redirect('/todo');
+    res.redirect('/todo');
 })
 .listen(8080);
