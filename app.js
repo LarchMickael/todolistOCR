@@ -39,4 +39,7 @@ selon l'index reçu dans l'adresse, on splice la ligne de la todolist[] correspo
     }
     res.redirect('/todo');
 })
-;
+.use(function(req, res, next){
+    redirect('/todo');
+})
+.listen(8080);
