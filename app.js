@@ -3,11 +3,15 @@ var session = require('cookie-session');
 var bodyparser = require('body-parser');
 var urlencodedparser = bodyparser.urlencoded({extended: false});
 var path = require('path');
+var fs = require('fs');
+
 
 var app = express();
 
-app.set('views', path.join(__dirname, 'public/views'));
+var dicoFr;
 
+//Paramêtrage du serveur
+app.set('views', path.join(__dirname, 'public/views'));
 app.use(express.static(path.join(__dirname, 'public')));
 
 //Création d'une session
@@ -23,7 +27,8 @@ app.use(function(req, res, next) {
 
 //Route principale /todo
 app.get('/todo', function(req, res){
-    res.render('todo.ejs', {todolist: req.session.todolist});
+    dicoFr = JSON.parse(fs.readFileSync('public/Textes/texte.json', 'utf8'));
+    res.render('todo.ejs', {todolist: req.session.todolist, dico: dicoFr});
 });
 
 /*Route pour l'ajout /todo/ajouter: on ajoute le contenu de newtodo (cf todo.ejs)

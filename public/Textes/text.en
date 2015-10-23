@@ -1,0 +1,5 @@
+english: {
+  titre: "My TodoList :",
+  label: "What do I have to do?",
+  bouton: "DO IT!"
+}
